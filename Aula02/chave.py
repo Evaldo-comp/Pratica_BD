@@ -16,18 +16,13 @@ dados = [
 with sqlite3.connect('Brasil.db') as conexao:
     conexao.row_factory = sqlite3.Row
 
-    print(f"{'id':3s} {'Estado':20s} {'População':12s}")
-    print("=" * 37)
+     with closing(conexao.cursor()) as cursor:
+          cursor.execute("""create table estados
+                              (
+                                  id integer primary key autoincrement,
+                                  nome text,
+                                  populacao integer
+                              )""")
+         #cursor.executemany("insert into estados(nome, populacao) values(?, ?) ", dados)
 
-    for estado in conexao.execute("select * from  estados order by nome"):
-        print(f"{estado['id']:3d} {estado['nome']:20s} {estado['populacao']:12d}")
-    # with closing(conexao.cursor()) as cursor:
-    #     # cursor.execute("""create table estados
-    #     #                     (
-    #     #                         id integer primary key autoincrement,
-    #     #                         nome text,
-    #     #                         populacao integer
-    #     #                     )""")
-    #     # cursor.executemany("insert into estados(nome, populacao) values(?, ?) ", dados)
-
-    # conexao.commit()
+     conexao.commit()
