@@ -41,7 +41,7 @@ def menu():
 
             antiga = data.busca_antiga(conexao)
 
-            print(f'A linguagens mais antiga é  {antiga[1]}')
+            print(f'A linguagem mais antiga é  {antiga[1]}')
         elif user_input == "5":
             exit()
         else:
