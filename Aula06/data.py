@@ -1,6 +1,6 @@
 import sqlite3
 
-CREATE_TABLE = "create table linguagens(id integer primary key, nome text, criador text, ano integer)"
+CREATE_TABLE = "create table linguagens(nome text, criador text, ano integer)"
 
 INSERT_LINGUAGENS = "insert into linguagens(nome, criador ,ano) values(?, ? ,?);"
 
